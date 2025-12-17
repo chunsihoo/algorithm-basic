@@ -130,7 +130,7 @@ print(total)
 
 ---
 
-## 7. Mini Project
+##  Mini Project
 
 ### 📁 robot-action-decider
 
@@ -143,7 +143,7 @@ mini-projects
 
 ---
 
-## 8. 로봇 행동 결정 프로그램
+##  로봇 행동 결정 프로그램
 
 ### 프로젝트 개요
 
