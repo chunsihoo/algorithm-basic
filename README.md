@@ -944,9 +944,7 @@ else:
 앞으로 조건문·반복문과 결합된 더 복잡한 계산 문제와
 실제 하드웨어 제어 프로젝트로 확장할 계획입니다.
 
-# ✅ Chapter 3. 기본 문법
-
-## 3. 제어 흐름 (Control Flow and Iterables)
+# 제어 흐름 (Control Flow and Iterables)
 
 # 🧠 3.7. 예외(Exception) 처리
 
