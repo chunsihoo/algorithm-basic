@@ -1184,3 +1184,264 @@ JSON(JavaScript Object Notation)은
 안정적인 프로그램을 만들기 위한 기반 문법으로,
 향후 로봇 제어, 서버 통신, 데이터 처리 프로젝트로 확장할 수 있습니다.
 
+
+
+# 4. 함수 (Functions)
+
+함수는 **특정 작업을 수행하는 코드 묶음**입니다.
+필요할 때마다 호출해서 사용할 수 있으며, 입력값을 받아 **결과를 반환**할 수도 있습니다.
+
+함수를 사용하면 코드의 재사용성과 가독성이 높아지고, 유지보수가 쉬워집니다.
+
+---
+
+## 4.1 함수의 기본 구조
+
+```python
+def 함수이름(매개변수):
+    실행할 코드
+    return 결과
+```
+
+### 구성 요소 설명
+
+* **def** : 함수를 정의하는 키워드
+* **함수이름** : 함수의 역할을 나타내는 이름
+
+  * 예: `calculate_area`, `say_hello`
+* **매개변수(parameter)** : 함수에 전달되는 입력값 (없을 수도 있음)
+* **return** : 함수 실행 결과를 반환 (생략 가능)
+
+---
+
+## 4.2 함수의 핵심 요소
+
+### 1️⃣ 입력값이 있는 함수
+
+외부에서 값을 받아 처리하는 가장 일반적인 형태
+
+```python
+def add(a, b):
+    return a + b
+
+result = add(3, 5)   # 8
+```
+
+---
+
+### 2️⃣ 결과값이 없는 함수 (return 생략)
+
+작업만 수행하고 값을 반환하지 않는 함수
+
+```python
+def greet(name):
+    print(f"안녕하세요, {name}님!")
+
+greet("지민")
+# 반환값은 None
+```
+
+---
+
+### 3️⃣ 기본 매개변수 (Default Parameters)
+
+매개변수가 전달되지 않았을 때 사용할 기본값 지정
+
+```python
+def power(n, p=2):
+    return n ** p
+
+print(power(5))      # 25
+print(power(5, 3))   # 125
+```
+
+---
+
+## 4.3 함수를 사용하는 이유 (장점)
+
+* **재사용성** : 한 번 만든 함수를 여러 번 호출 가능
+* **가독성** : 기능별 분리로 코드가 깔끔해짐
+* **유지보수** : 문제 발생 시 해당 함수만 수정
+
+---
+
+## 4.4 람다(Lambda) 함수
+
+람다 함수는 **이름 없이 한 줄로 정의하는 간단한 함수(익명 함수)** 입니다.
+
+```python
+# 일반 함수
+def add(a, b):
+    return a + b
+
+# 람다 함수
+add_lambda = lambda a, b: a + b
+
+print(add_lambda(10, 20))   # 30
+```
+
+---
+
+## 4.5 가변 매개변수 (*args)
+
+### 1️⃣ 여러 개의 인수를 받는 함수
+
+```python
+def varargs(*args):
+    return args
+
+varargs(1, 2, 3)   # (1, 2, 3)
+```
+
+* `*args`는 전달된 값을 **튜플(tuple)** 로 저장
+* 위치 인자만 받음
+* 관례적으로 이름을 `args`로 사용
+
+```python
+def total(*args):
+    return sum(args)
+
+print(total(1, 2, 3, 4))   # 10
+```
+
+---
+
+## 4.6 지역 변수와 전역 변수
+
+### 지역 변수 (Local Variable)
+
+* 함수 내부에서 선언
+* 함수 종료 시 소멸
+
+### 전역 변수 (Global Variable)
+
+* 함수 외부에서 선언
+* 프로그램 전체에서 사용 가능
+
+```python
+x = 5   # 전역 변수
+
+def set_x(num):
+    x = num      # 지역 변수
+    print(x)
+
+def set_global_x(num):
+    global x
+    print(x)
+    x = num
+    print(x)
+
+set_x(43)
+set_global_x(6)
+```
+
+출력 결과:
+
+```
+43
+5
+6
+```
+
+---
+
+## 4.7 위치 매개변수와 키워드 매개변수
+
+### 위치 매개변수
+
+```python
+add(5, 6)
+```
+
+### 키워드 매개변수
+
+```python
+add(y=6, x=5)
+```
+
+---
+
+## 4.8 키워드 가변 인수 (**kwargs)
+
+```python
+def func(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
+func(1, 2, name="John", age=30)
+```
+
+출력:
+
+```
+(1, 2)
+{'name': 'John', 'age': 30}
+```
+
+```python
+def keyword_args(**kwargs):
+    return kwargs
+
+keyword_args(big="foot", loch="ness")
+```
+
+---
+
+## 4.9 Practice
+
+### Practice 4.1 두 점 사이의 거리
+
+```python
+import math
+
+def distance(x1, y1, x2, y2):
+    return round(math.sqrt((x2 - x1)**2 + (y2 - y1)**2), 2)
+```
+
+---
+
+### Practice 4.2 제곱의 합
+
+```python
+def s(m, n):
+    return sum(i**2 for i in range(m, n + 1))
+```
+
+---
+
+### Practice 4.3 평균 계산 함수
+
+```python
+def avg(*args):
+    return sum(args) / len(args)
+```
+
+---
+
+### Practice 4.4 중복 제거 함수
+
+```python
+def deduplicate(*args):
+    return sorted(set(args))
+```
+
+예시:
+
+```python
+deduplicate('a','b','c','d','a','e','b')
+# ['a', 'b', 'c', 'd', 'e']
+
+deduplicate(10,21,32,44,11,21,43,21)
+# [10, 11, 21, 32, 43, 44]
+```
+
+---
+
+## ✨ 마무리
+
+이 문서는 **파이썬 함수의 개념부터 실전 활용까지** 정리한 학습 기록입니다.
+
+기초 문법을 바탕으로 알고리즘 문제 해결과
+로봇 제어, 데이터 처리 프로그램으로 확장할 수 있는 핵심 개념을 담고 있습니다.
+
+
